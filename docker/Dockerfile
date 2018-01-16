@@ -4,8 +4,8 @@ ENV FEDORA_HOME=/home/fedora/fedora38 \
     CATALINA_HOME=/home/fedora/fedora38/tomcat
 
 ADD http://epc.ub.uu.se/downloads/fcrepo-installer-3.8.1.jar .
-COPY files/install.properties .
-COPY files/postgresql-9.4.1208.jar .
+ADD http://epc.ub.uu.se/downloads/postgresql-9.4.1208.jar .
+COPY install.properties .
 
 RUN java -jar fcrepo-installer-3.8.1.jar install.properties
 
@@ -37,6 +37,11 @@ USER $USER_NAME
 EXPOSE 8088 8443 61616
 
 CMD ["catalina.sh", "run"]
+
+
+# build with
+# mvn build OR
+# docker build --force-rm --pull -t cora-fedora:3.8.1 .
 
 
 
