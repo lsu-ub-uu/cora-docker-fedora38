@@ -11,6 +11,8 @@ RUN java -jar fcrepo-installer-3.8.1.jar install.properties
 
 WORKDIR $CATALINA_HOME/webapps
 
+COPY server.xml $CATALINA_HOME/conf/
+
 RUN rm -fR saxon examples fedora-demo imagemanip fop && \
     rm fedora-demo.war imagemanip.war fop.war
 
