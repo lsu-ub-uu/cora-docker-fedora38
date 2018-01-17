@@ -5,13 +5,13 @@ ENV FEDORA_HOME=/home/fedora/fedora38 \
 
 ADD http://epc.ub.uu.se/downloads/fcrepo-installer-3.8.1.jar .
 ADD http://epc.ub.uu.se/downloads/postgresql-9.4.1208.jar .
-COPY install.properties .
+COPY files/install.properties .
 
 RUN java -jar fcrepo-installer-3.8.1.jar install.properties
 
 WORKDIR $CATALINA_HOME/webapps
 
-COPY server.xml $CATALINA_HOME/conf/
+COPY files/server.xml $CATALINA_HOME/conf/
 
 RUN rm -fR saxon examples fedora-demo imagemanip fop && \
     rm fedora-demo.war imagemanip.war fop.war

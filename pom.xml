@@ -63,7 +63,6 @@
                 </executions>
                 <configuration>
                     <repository>cora-docker-fedora</repository>
-                    <contextDirectory>docker</contextDirectory>
                     <tag>3.8.1</tag>
                 </configuration>
             </plugin>
