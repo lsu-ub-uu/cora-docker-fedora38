@@ -1,7 +1,7 @@
-<!-- ~ Copyright 2015 Uppsala University Library ~ ~ This file is part of 
-	Cora. ~ ~ Cora is free software: you can redistribute it and/or modify ~ 
-	it under the terms of the GNU General Public License as published by ~ the 
-	Free Software Foundation, either version 3 of the License, or ~ (at your 
+<!-- ~ Copyright 2015 Uppsala University Library ~ ~ This file is part of
+	Cora. ~ ~ Cora is free software: you can redistribute it and/or modify ~
+	it under the terms of the GNU General Public License as published by ~ the
+	Free Software Foundation, either version 3 of the License, or ~ (at your
 	option) any later version. ~ ~ Cora is distributed in the hope that it will 
 	be useful, ~ but WITHOUT ANY WARRANTY; without even the implied warranty 
 	of ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the ~ GNU General 
@@ -46,10 +46,44 @@
     </repositories>
 
     <dependencies>
+        <!-- fcrepo installer -->
+        <dependency>
+            <groupId>org.fcrepo</groupId>
+            <artifactId>fcrepo-installer</artifactId>
+            <version>3.8.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- JDBC driver -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.4.1212</version>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <overWriteReleases>false</overWriteReleases>
+                            <includeScope>runtime</includeScope>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>dockerfile-maven-plugin</artifactId>
