@@ -8,6 +8,7 @@ ENV FEDORA_HOME=/home/fedora/fedora38 \
 ADD target/lib/fcrepo-installer-3.8.1.jar .
 ADD target/lib/postgresql-9.4.1212.jar .
 COPY files/install.properties .
+COPY files/docker-compose.yml .
 
 RUN java -jar fcrepo-installer-3.8.1.jar install.properties
 
@@ -48,8 +49,8 @@ CMD ["catalina.sh", "run"]
 
 
 # build with
-# mvn build OR
-# docker build --force-rm --pull -t cora-fedora:3.8.1 .
+# mvn package
+
 
 
 
