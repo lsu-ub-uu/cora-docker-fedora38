@@ -48,8 +48,8 @@ CMD ["catalina.sh", "run"]
 
 
 # build with
-# mvn build OR
-# docker build --force-rm --pull -t cora-fedora:3.8.1 .
+# mvn package
+
 
 
 
