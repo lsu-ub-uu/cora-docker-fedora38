@@ -8,13 +8,15 @@ ENV FEDORA_HOME=/home/fedora/fedora38 \
 ADD target/lib/fcrepo-installer-3.8.1.jar .
 ADD target/lib/postgresql-9.4.1212.jar .
 COPY files/install.properties .
-COPY files/docker-compose.yml .
 
 RUN java -jar fcrepo-installer-3.8.1.jar install.properties
 
 WORKDIR $CATALINA_HOME/webapps
 
 COPY files/server.xml $CATALINA_HOME/conf/
+
+# create this directories, because only then mappping till a volume works
+RUN mkdir -p $FEDORA_HOME/data $FEDORA_HOME/server/logs
 
 RUN keytool -genkey -alias cora-fedora -validity 720 \
         -keyalg RSA -keystore /home/fedora/.keystore  -storetype PKCS12 \
@@ -43,6 +45,10 @@ RUN chown -R $USER_NAME: *
 
 USER $USER_NAME
 
+VOLUME $FEDORA_HOME/data
+VOLUME $FEDORA_HOME/server/logs
+VOLUME $FEDORA_HOME/tomcat/logs
+
 EXPOSE 8088 8443 61616
 
 CMD ["catalina.sh", "run"]
@@ -50,6 +56,12 @@ CMD ["catalina.sh", "run"]
 
 # build with
 # mvn package
+
+# run with
+# scripts/start.sh
+
+# stop with
+# scripts/stop.sh
 
 
 
