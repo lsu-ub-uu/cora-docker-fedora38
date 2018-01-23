@@ -18,10 +18,11 @@ COPY files/server.xml $CATALINA_HOME/conf/
 # create this directories, because only then mappping till a volume works
 RUN mkdir -p $FEDORA_HOME/data $FEDORA_HOME/server/logs
 
-RUN keytool -genkey -alias cora-fedora -validity 720 \
-        -keyalg RSA -keystore /home/fedora/.keystore  -storetype PKCS12 \
-        -dname "CN=fedora.cora.epc.ub.uu.se, OU=Library systems Unit, O=Uppsala University, L=Uppsala, ST=Uppland, C=SE" \
-        -storepass changeit -keypass changeit
+# SSL is deactivated
+# RUN keytool -genkey -alias cora-fedora -validity 720 \
+#        -keyalg RSA -keystore /home/fedora/.keystore  -storetype PKCS12 \
+#        -dname "CN=fedora.cora.epc.ub.uu.se, OU=Library systems Unit, O=Uppsala University, L=Uppsala, ST=Uppland, C=SE" \
+#        -storepass changeit -keypass changeit
 
 # Stage 2: start with fresh image and for /home/fedora into the new image
 #
