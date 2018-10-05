@@ -1,4 +1,4 @@
-<!-- ~ Copyright 2015 Uppsala University Library ~ ~ This file is part of
+<!-- ~ Copyright 2015, 2018 Uppsala University Library ~ ~ This file is part of
 	Cora. ~ ~ Cora is free software: you can redistribute it and/or modify ~
 	it under the terms of the GNU General Public License as published by ~ the
 	Free Software Foundation, either version 3 of the License, or ~ (at your
@@ -16,7 +16,7 @@
     <parent>
         <groupId>se.uu.ub.cora</groupId>
         <artifactId>cora-parent</artifactId>
-        <version>0.6-SNAPSHOT</version>
+        <version>0.7-SNAPSHOT</version>
     </parent>
 
     <artifactId>cora-docker-fedora</artifactId>
@@ -29,21 +29,6 @@
         <developerConnection>scm:git:https://github.com/lsu-ub-uu/cora-docker-fedora.git</developerConnection>
         <url>https://github.com/lsu-ub-uu/cora-docker-fedora</url>
     </scm>
-
-    <repositories>
-        <repository>
-            <id>maven-public</id>
-            <name>LSU Nexus Repository</name>
-            <url>http://epc.ub.uu.se/nexus/repository/maven-public/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <updatePolicy>daily</updatePolicy>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 
     <dependencies>
         <!-- fcrepo installer -->
