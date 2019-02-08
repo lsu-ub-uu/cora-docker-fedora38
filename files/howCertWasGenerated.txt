@@ -1,0 +1,5 @@
+keytool -noprompt -genkey -keyalg RSA -storetype PKCS12 -alias fedoraDockerCert -keystore fedoraKeystore.jks -storepass changeit -validity 36500 -keysize 4096 -dname "C=SE, ST=Uppland, L=Uppsala, O=Uppsala Universitet, OU=Cora, CN=*docker-fedora" -ext "san=dns:localhost,dns:alvin-docker-fedora,dns:diva-docker-fedora,dns:alvin-docker-fedora-test,dns:diva-docker-fedora-test,ip:127.0.0.1"
+
+
+keytool -export -alias fedoraDockerCert -keystore fedoraKeystore.jks -file fedoraDockerCert.cert -storepass changeit
+keytool -printcert -rfc -file fedoraDockerCert.cert > fedoraDockerPublicKey.pem
