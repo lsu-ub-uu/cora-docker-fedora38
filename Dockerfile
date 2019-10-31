@@ -48,7 +48,7 @@ COPY files/deny-apim-if-not-localhost.xml $FEDORA_HOME/data/fedora-xacml-policie
 COPY files/fedoraKeystore.jks .keystore
 COPY files/fedoraDockerPublicKey.pem $FEDORA_HOME/fedoraDockerPublicKey.pem
 
-RUN chown -R $USER_NAME: *
+RUN chown -R $USER_NAME: .
 
 USER $USER_NAME
 
