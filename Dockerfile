@@ -42,14 +42,15 @@ WORKDIR $USER_HOME
 
 COPY --from=fcrepo /home/fedora/ .
 
-RUN chown -R $USER_NAME: *
-
-USER $USER_NAME
 ADD files/policies.tgz $FEDORA_HOME/data/
 COPY files/deny-apim-if-not-localhost.xml $FEDORA_HOME/data/fedora-xacml-policies/repository-policies/default/
 
 COPY files/fedoraKeystore.jks .keystore
 COPY files/fedoraDockerPublicKey.pem $FEDORA_HOME/fedoraDockerPublicKey.pem
+
+RUN chown -R $USER_NAME: *
+
+USER $USER_NAME
 
 RUN keytool  -import -noprompt -alias fedoraDockerCert -keystore $FEDORA_HOME/client/truststore -file  $FEDORA_HOME/fedoraDockerPublicKey.pem -storepass tomcat
 
