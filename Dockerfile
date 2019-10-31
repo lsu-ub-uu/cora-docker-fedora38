@@ -51,6 +51,7 @@ COPY files/fedoraDockerPublicKey.pem $FEDORA_HOME/fedoraDockerPublicKey.pem
 USER root
 
 RUN chown -R $USER_NAME: .
+RUN chown  $USER_NAME: .keystore
 
 USER $USER_NAME
 
