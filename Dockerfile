@@ -51,15 +51,24 @@ COPY files/fedoraDockerPublicKey.pem $FEDORA_HOME/fedoraDockerPublicKey.pem
 USER root
 
 RUN chown -R $USER_NAME: .
-RUN chown  $USER_NAME: .keystore
+
+RUN ls -la
 
 USER $USER_NAME
 
 RUN keytool  -import -noprompt -alias fedoraDockerCert -keystore $FEDORA_HOME/client/truststore -file  $FEDORA_HOME/fedoraDockerPublicKey.pem -storepass tomcat
 
+
+
 VOLUME $FEDORA_HOME/data
 VOLUME $FEDORA_HOME/server/logs
 VOLUME $FEDORA_HOME/tomcat/logs
+
+USER root
+RUN ls -la 
+RUN chown  $USER_NAME: .keystore
+RUN ls -la 
+USER $USER_NAME
 
 EXPOSE 8088 8443 61616
 
