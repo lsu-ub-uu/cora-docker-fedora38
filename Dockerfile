@@ -1,6 +1,6 @@
 # Stage 1: where Fedora installation is run
 #
-FROM anapsix/alpine-java:8 AS fcrepo
+FROM openjdk:8-jdk-alpine AS fcrepo
 
 ENV FEDORA_HOME=/home/fedora/fedora38 \
     CATALINA_HOME=/home/fedora/fedora38/tomcat
@@ -26,7 +26,7 @@ RUN mkdir -p $FEDORA_HOME/data $FEDORA_HOME/server/logs
 
 # Stage 2: start with fresh image and for /home/fedora into the new image
 #
-FROM anapsix/alpine-java:8
+FROM openjdk:8-jdk-alpine
 
 ENV USER_NAME=fedora \
     USER_HOME=/home/fedora \
