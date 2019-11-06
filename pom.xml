@@ -19,14 +19,14 @@
 
     <artifactId>cora-docker-fedora-3.8.1</artifactId>
     <packaging>pom</packaging>
-    <version>2.1.0-SNAPSHOT</version>
+    <version>2.1.0</version>
     <name>Cora Fedora Repository Docker</name>
 
     <scm>
         <connection>scm:git:https://github.com/lsu-ub-uu/cora-docker-fedora.git</connection>
         <developerConnection>scm:git:https://github.com/lsu-ub-uu/cora-docker-fedora.git</developerConnection>
         <url>https://github.com/lsu-ub-uu/cora-docker-fedora</url>
-      <tag>release/2.1</tag>
+      <tag>cora-docker-fedora-3.8.1-2.1.0</tag>
   </scm>
 
     <dependencies>
