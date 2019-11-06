@@ -2,6 +2,13 @@
 #
 FROM openjdk:8-jdk-alpine AS fcrepo
 
+# Add bash to alpine
+USER root
+
+RUN apk add --no-cache bash
+
+USER $USER_NAME
+
 ENV FEDORA_HOME=/home/fedora/fedora38 \
     CATALINA_HOME=/home/fedora/fedora38/tomcat
 
