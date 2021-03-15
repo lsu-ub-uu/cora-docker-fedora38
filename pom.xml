@@ -30,7 +30,6 @@
   </scm>
 
     <dependencies>
-        <!-- fcrepo installer -->
         <dependency>
             <groupId>org.fcrepo</groupId>
             <artifactId>fcrepo-installer</artifactId>
@@ -42,7 +41,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!-- JDBC driver -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
